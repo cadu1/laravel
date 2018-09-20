@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,4 +57,29 @@ Route::view('/helloworld', 'hello', ['nome' => 'João']);
 
 Route::get('/helloworld/{nome}/{sobnome?}', function($nome, $sobnome = null) {
     return view('hello', ['nome' => $nome, 'sobnome' => $sobnome]);
+});
+
+Route::get('/rest', function() {
+    return 'hello get';
+});
+
+Route::post('/rest', function(Request $req) {
+    $nome = $req->input('nome');
+    return 'hello post ' . $nome;
+});
+
+Route::delete('/rest', function() {
+    return 'hello delete';
+});
+
+Route::put('/rest', function() {
+    return 'hello put';
+});
+
+Route::patch('/rest', function() {
+    return 'hello patch';
+});
+
+Route::options('/rest', function() {
+    return 'hello options';
 });
