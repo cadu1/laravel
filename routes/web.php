@@ -114,3 +114,5 @@ Route::get('/prod_red', function() {
 Route::get('/teste', 'MeuControlador@getNome');
 
 Route::get('/multiplica/{n1}/{n2}', 'MeuControlador@multiplica');
+
+Route::resource('/cliente', 'ClienteControlador');
