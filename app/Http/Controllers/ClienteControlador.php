@@ -13,7 +13,7 @@ class ClienteControlador extends Controller
      */
     public function index()
     {
-        //
+        return 'Lista todos os Clientes';
     }
 
     /**
@@ -23,7 +23,7 @@ class ClienteControlador extends Controller
      */
     public function create()
     {
-        //
+        return 'Formulário de clientes';
     }
 
     /**
@@ -34,7 +34,12 @@ class ClienteControlador extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arrCli = [
+            'nome' => $request->input('nome'),
+            'idade' => $request->input('idade')
+        ];
+
+        return response(json_encode($arrCli), 201);
     }
 
     /**
@@ -45,7 +50,13 @@ class ClienteControlador extends Controller
      */
     public function show($id)
     {
-        //
+        $arrClientes = [ 'Cliente 1', 'Cliente 2', 'Cliente 3', 'Cliente 4' ];
+
+        if( isset($arrClientes[$id]) ) {
+            return response($arrClientes[$id], 202);
+        }
+
+        return response('', 204);
     }
 
     /**
@@ -56,7 +67,7 @@ class ClienteControlador extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Editando dados do cliente $id";
     }
 
     /**
@@ -68,7 +79,8 @@ class ClienteControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $str = "dados do cliente $id, alterado! ". $request->input('nome');
+        return response($str, 200);
     }
 
     /**
@@ -79,6 +91,6 @@ class ClienteControlador extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response("Cliente $id excluído", 202);
     }
 }
