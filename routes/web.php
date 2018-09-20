@@ -91,3 +91,22 @@ Route::match(['get', 'post'], '/rest/pg', function(){
 Route::any('/rest/any', function(){
     return 'hello 3';
 });
+
+Route::get('/produtos', function() {
+    return '
+    <h1>Produtos</h1>
+    <ol>
+        <li>Produto 1</li>
+        <li>Produto 2</li>
+        <li>Produto 3</li>
+    </ol>';
+})->name('produtos');
+
+Route::get('/prodlink', function() {
+    $url = route('produtos');
+    return "<a href='$url'>Produtos</a>";
+});
+
+Route::get('/prod_red', function() {
+    return redirect()->route('produtos');
+});
