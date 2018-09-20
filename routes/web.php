@@ -83,3 +83,11 @@ Route::patch('/rest', function() {
 Route::options('/rest', function() {
     return 'hello options';
 });
+
+Route::match(['get', 'post'], '/rest/pg', function(){
+    return 'hello 2';
+});
+
+Route::any('/rest/any', function(){
+    return 'hello 3';
+});
