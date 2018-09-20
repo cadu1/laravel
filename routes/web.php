@@ -31,4 +31,8 @@ Route::get('/repetir/{nome}/{num}', function($nome, $num) {
     for($i = 0; $i < $num; $i++) {
         echo "<h1>$nome</h1>";
     }
+})->where('num', '[0-9]+')->where('nome', '[A-Za-z]+');
+
+Route::get('opcional/{nome?}', function($nome=null) {
+   echo var_dump($nome);
 });
