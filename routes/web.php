@@ -36,3 +36,15 @@ Route::get('/repetir/{nome}/{num}', function($nome, $num) {
 Route::get('opcional/{nome?}', function($nome=null) {
    echo var_dump($nome);
 });
+
+Route::prefix('app')->group(function() {
+   Route::get('/', function() {
+       return 'Página inicial do APP';
+   });
+   Route::get('profile', function() {
+       return 'Página profile';
+   });
+   Route::get('about', function() {
+       return 'Página about';
+   });
+});
