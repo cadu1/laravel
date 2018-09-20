@@ -111,6 +111,6 @@ Route::get('/prod_red', function() {
     return redirect()->route('produtos');
 });
 
-Route::get('/teste', 'MeuControllador@getNome');
+Route::get('/teste', 'MeuControlador@getNome');
 
-Route::get('/multiplica/{n1}/{n2}', 'MeuControllador@multiplica');
+Route::get('/multiplica/{n1}/{n2}', 'MeuControlador@multiplica');
