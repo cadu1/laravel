@@ -116,3 +116,18 @@ Route::get('/teste', 'MeuControlador@getNome');
 Route::get('/multiplica/{n1}/{n2}', 'MeuControlador@multiplica');
 
 Route::resource('/cliente', 'ClienteControlador');
+
+Route::view('/view', 'minhaview', ['nome' => 'carlos']);
+
+Route::get('/view1', function() {
+    return view('minhaview')->with('nome', 'joão');
+});
+
+Route::get('/view2/{nome}', function($nome) {
+    $param = ['nome' => $nome];
+    return view('minhaview', $param);
+});
+
+Route::get('/view3/{nome}', function($nome) {
+    return view('minhaview', compact('nome'));
+});
