@@ -48,3 +48,11 @@ Route::prefix('app')->group(function() {
        return 'Página about';
    });
 });
+
+Route::redirect('/red', '/ola', 301);
+
+Route::view('/helloworld', 'hello', ['nome' => 'João']);
+
+Route::get('/helloworld/{nome}/{sobnome?}', function($nome, $sobnome = null) {
+    return view('hello', ['nome' => $nome, 'sobnome' => $sobnome]);
+});
