@@ -143,3 +143,5 @@ Route::get('/error', function() {
 Route::get('/layout', function() {
     return view('conteudo');
 });
+
+Route::get('/produtos', 'ProdutoControlador@listar');
