@@ -92,8 +92,11 @@
                 </div>
                 @show
 
-                @component('componentes.meucomponente')
+                @component('componentes.meucomponente', ['tipo' => 'danger'])
                     testes
+                    @slot('titulo')
+                        Erro Fatal
+                    @endslot
                 @endcomponent
             </div>
         </div>
