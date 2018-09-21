@@ -131,3 +131,11 @@ Route::get('/view2/{nome}', function($nome) {
 Route::get('/view3/{nome}', function($nome) {
     return view('minhaview', compact('nome'));
 });
+
+Route::get('/error', function() {
+    if(View::exists('teste')) {
+        return view('teste');
+    } else {
+        return view('error');
+    }
+});
