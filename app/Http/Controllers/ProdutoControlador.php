@@ -29,4 +29,8 @@ class ProdutoControlador extends Controller
     public function opcoes($opt) {
     	return view('opcao', compact('opt'));
     }
+
+    public function loop($n) {
+    	return view('loop', compact('n'));
+    }
 }

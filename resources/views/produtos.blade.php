@@ -7,6 +7,9 @@
 	@if(isset($produtos))
 		@if(count($produtos) > 0)
 			<h1>Produtos</h1>
+			@foreach($produtos as $p)
+				<p>Nome: {{$p}}</p>
+			@endforeach
 		@else
 			<h1>Nenhum produto encontrado</h1>
 		@endif

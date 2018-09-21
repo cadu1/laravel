@@ -151,3 +151,5 @@ Route::get('/produtos/{palavra}', 'ProdutoControlador@palavra');
 Route::get('/mostraopt', 'ProdutoControlador@mostraopt');
 
 Route::get('/opcao/{opt}', 'ProdutoControlador@opcoes');
+
+Route::get('/loop/{n}', 'ProdutoControlador@loop');
