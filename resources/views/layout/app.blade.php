@@ -92,12 +92,26 @@
                 </div>
                 @show
 
-                @alerta(['tipo' => 'danger'])
-                    testes
-                    @slot('titulo')
-                        Erro Fatal
-                    @endslot
-                @endalerta
+                @if(isset($err))
+                    @alerta(['tipo' => 'danger'])
+                        testes
+                        @slot('titulo')
+                            Erro Fatal
+                        @endslot
+                    @endalerta
+                @endif
+
+                @hasSection('produtos')
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produtos</h5>
+                        <p class="card-text">
+                            @yield('produtos')
+                        </p>
+                        <a href="#">Informações</a>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
         <script type="text/javascript" src="{{asset('js/app.js')}}"></script>

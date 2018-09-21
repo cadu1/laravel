@@ -17,4 +17,8 @@ class ProdutoControlador extends Controller
 
     	return view('produtos', compact('produtos'));
     }
+
+    public function palavra($palavra) {
+    	return view('cardprod', compact('palavra'));
+    }
 }
