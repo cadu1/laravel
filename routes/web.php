@@ -147,3 +147,7 @@ Route::get('/layout', function() {
 Route::get('/produtos', 'ProdutoControlador@listar');
 
 Route::get('/produtos/{palavra}', 'ProdutoControlador@palavra');
+
+Route::get('/mostraopt', 'ProdutoControlador@mostraopt');
+
+Route::get('/opcao/{opt}', 'ProdutoControlador@opcoes');

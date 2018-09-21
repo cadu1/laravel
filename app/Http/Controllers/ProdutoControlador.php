@@ -21,4 +21,12 @@ class ProdutoControlador extends Controller
     public function palavra($palavra) {
     	return view('cardprod', compact('palavra'));
     }
+
+    public function mostraopt() {
+    	return view('prodopt');
+    }
+
+    public function opcoes($opt) {
+    	return view('opcao', compact('opt'));
+    }
 }
