@@ -9,6 +9,14 @@
 			<h1>Produtos</h1>
 			@foreach($produtos as $p)
 				<p>Nome: {{$p}}</p>
+				@if($loop->first)
+					(primeiro)
+				@endif
+				@if($loop->last)
+					(último)
+				@endif
+				<span class="badge badge-secondary">{{$loop->index}} / {{$loop->count}} / {{$loop->remaining}}</span>
+				<span class="badge badge-secondary">{{$loop->iteration}} / {{$loop->count}}</span>
 			@endforeach
 		@else
 			<h1>Nenhum produto encontrado</h1>
