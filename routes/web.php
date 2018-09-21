@@ -139,3 +139,7 @@ Route::get('/error', function() {
         return view('error');
     }
 });
+
+Route::get('/layout', function() {
+    return view('conteudo');
+});
