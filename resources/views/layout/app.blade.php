@@ -92,12 +92,12 @@
                 </div>
                 @show
 
-                @component('componentes.meucomponente', ['tipo' => 'danger'])
+                @alerta(['tipo' => 'danger'])
                     testes
                     @slot('titulo')
                         Erro Fatal
                     @endslot
-                @endcomponent
+                @endalerta
             </div>
         </div>
         <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
