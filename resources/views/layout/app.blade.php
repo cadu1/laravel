@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <!--link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"-->
+        <link href="{{URL::to('css/app.css')}}" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -89,7 +91,12 @@
                     <a href="https://laravel-news.com">News</a>
                 </div>
                 @show
+
+                @component('componentes.meucomponente')
+                    testes
+                @endcomponent
             </div>
         </div>
+        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     </body>
 </html>
