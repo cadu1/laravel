@@ -162,10 +162,19 @@ Route::get('/categorias', function() {
     }
 
     echo '<hr>';
-
     $cats2 = DB::table('categorias')->pluck('nomes');
     foreach($cats2 as $c) {
         echo "Nome: $c<br>";
     }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->where('id', 1)->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cat = DB::table('categorias')->where('id', 1)->first();
+    echo "Id: {$cat->id}, Nome: {$cat->nomes}<br>";
 
 });
