@@ -229,3 +229,12 @@ Route::get('/nova_categoria', function() {
     echo $id;
 });
 
+Route::get('/atualiza_registro', function() {
+    $cat = DB::table('categorias')->where('id', 1)->first();
+    echo "Id: {$cat->id}, Nome: {$cat->nomes}<br>";
+
+    DB::table('categorias')->where('id', 1)->update(['nomes' => 'Teste 1 Alterado']);
+
+    $cat = DB::table('categorias')->where('id', 1)->first();
+    echo "Id: {$cat->id}, Nome: {$cat->nomes}<br>";
+});
