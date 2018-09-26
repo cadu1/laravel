@@ -177,4 +177,33 @@ Route::get('/categorias', function() {
     $cat = DB::table('categorias')->where('id', 1)->first();
     echo "Id: {$cat->id}, Nome: {$cat->nomes}<br>";
 
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->where('nomes', 'like', '%1')->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->where('id', '1')->orWhere('id', '3')->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->whereBetween('id', [1,3])->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->whereNotBetween('id', [1,2])->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->whereIn('id', [1,3,4])->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
 });
