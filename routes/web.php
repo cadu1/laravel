@@ -238,3 +238,18 @@ Route::get('/atualiza_registro', function() {
     $cat = DB::table('categorias')->where('id', 1)->first();
     echo "Id: {$cat->id}, Nome: {$cat->nomes}<br>";
 });
+
+Route::get('/remove_cat', function() {
+    $cats = DB::table('categorias')->get();
+    foreach($cats as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    DB::table('categorias')->where('id', 6)->delete();
+    echo '<hr>';
+
+    $cats = DB::table('categorias')->get();
+    foreach($cats as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+});
