@@ -206,4 +206,26 @@ Route::get('/categorias', function() {
     foreach($cats2 as $c) {
         echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
     }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->where([
+        ['id', 1],
+        ['nomes', 'like', '%1'],
+    ])->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+    $cats2 = DB::table('categorias')->orderBy('nomes', 'desc')->get();
+    foreach($cats2 as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
 });
+
+Route::get('/nova_categoria', function() {
+    $id = DB::table('categorias')->insertGetId(['nomes' => 'Teste 7']);
+
+    echo $id;
+});
+
