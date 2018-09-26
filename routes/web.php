@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,3 +154,18 @@ Route::get('/mostraopt', 'ProdutoControlador@mostraopt');
 Route::get('/opcao/{opt}', 'ProdutoControlador@opcoes');
 
 Route::get('/loop/{n}', 'ProdutoControlador@loop');
+
+Route::get('/categorias', function() {
+    $cats = DB::table('categorias')->get();
+    foreach($cats as $c) {
+        echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+
+    echo '<hr>';
+
+    $cats2 = DB::table('categorias')->pluck('nomes');
+    foreach($cats2 as $c) {
+        echo "Nome: $c<br>";
+    }
+
+});
