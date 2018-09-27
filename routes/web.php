@@ -364,3 +364,14 @@ Route::get('/cat_restore/{id}', function($id) {
         echo "Registro não encontrado";
     }
 });
+
+Route::get('/cat_frem/{id}', function($id) {
+    $cat = Categoria::find($id);
+    if( isset($cat) ) {
+        $cat->forceDelete();
+
+        return redirect('/lista_cat');
+    } else {
+        echo "Registro não localizado";
+    }
+});
