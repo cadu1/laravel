@@ -300,3 +300,26 @@ Route::get('/remove_cat/{id}', function($id) {
         echo "Registro não localizado";
     }
 });
+
+Route::get('/cat_nome/{nome}', function($nome) {
+    $cats = Categoria::where('nomes', $nome)->get();
+
+    foreach ($cats as $c) {
+        echo "Id: {$c->id}, Nome {$c->nomes}<br>";
+    }
+});
+
+Route::get('/cat_maior/{id}', function($id) {
+    $cats = Categoria::where('id', '>=', $id)->get();
+
+    foreach ($cats as $c) {
+        echo "Id: {$c->id}, Nome {$c->nomes}<br>";
+    }
+
+    $cats = Categoria::where('id', '>=', $id)->count();
+    echo "Count: $cats<br>";
+
+    $cats = Categoria::where('id', '>=', $id)->max('id');
+    echo "Max: $cats<br>";
+
+});
