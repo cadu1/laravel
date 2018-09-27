@@ -334,7 +334,7 @@ Route::get('/cat_todas', function() {
 });
 
 Route::get('/cat_ver/{id}', function($id) {
-    $cat = Categoria::withTrashed()->find($id);
+    // $cat = Categoria::withTrashed()->find($id);
     $cat = Categoria::withTrashed()->where('id', $id)->get()->first();
 
     if (isset($cat)) {
@@ -351,5 +351,16 @@ Route::get('/cat_verrem', function() {
     foreach ($cats as $c) {
         $trash = $c->trashed() ? 'Sim' : 'Não';
         echo "Id: {$c->id}, Nome {$c->nomes}, Excluído: $trash<br>";
+    }
+});
+
+Route::get('/cat_restore/{id}', function($id) {
+    $cat = Categoria::withTrashed()->find($id);
+
+    if (isset($cat)) {
+        $trash = $cat->restore();
+        echo "Id: {$cat->id}, Nome {$cat->nomes}, Restaurado<br>";
+    } else {
+        echo "Registro não encontrado";
     }
 });
