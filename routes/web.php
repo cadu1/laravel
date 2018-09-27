@@ -332,3 +332,24 @@ Route::get('/cat_todas', function() {
         echo "Id: {$c->id}, Nome {$c->nomes}, Excluído: $trash<br>";
     }
 });
+
+Route::get('/cat_ver/{id}', function($id) {
+    $cat = Categoria::withTrashed()->find($id);
+    $cat = Categoria::withTrashed()->where('id', $id)->get()->first();
+
+    if (isset($cat)) {
+        $trash = $cat->trashed() ? 'Sim' : 'Não';
+        echo "Id: {$cat->id}, Nome {$cat->nomes}, Excluído: $trash<br>";
+    } else {
+        echo "Registro não encontrado";
+    }
+});
+
+Route::get('/cat_verrem', function() {
+    $cats = Categoria::onlyTrashed()->get();
+
+    foreach ($cats as $c) {
+        $trash = $c->trashed() ? 'Sim' : 'Não';
+        echo "Id: {$c->id}, Nome {$c->nomes}, Excluído: $trash<br>";
+    }
+});
