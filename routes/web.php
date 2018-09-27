@@ -268,3 +268,12 @@ Route::get('/lista_cat', function() {
         echo "Id: {$c->id}, Nome {$c->nomes}<br>";
     }
 });
+
+Route::get('/lista_cat/{id}', function($id) {
+    $cat = Categoria::find($id);
+    if(isset($cat)) {
+        echo "Id: {$cat->id}, Nome {$cat->nomes}<br>";
+    } else {
+        echo "Registro não localizado";
+    }
+});
