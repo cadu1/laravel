@@ -277,3 +277,26 @@ Route::get('/lista_cat/{id}', function($id) {
         echo "Registro não localizado";
     }
 });
+
+Route::get('/atualiza_cat/{id}/{nome}', function($id, $nome) {
+    $cat = Categoria::find($id);
+    if( isset($cat) ) {
+        $cat->nomes = $nome;
+        $cat->save();
+
+        return redirect('/lista_cat');
+    } else {
+        echo "Registro não localizado";
+    }
+});
+
+Route::get('/remove_cat/{id}', function($id) {
+    $cat = Categoria::find($id);
+    if( isset($cat) ) {
+        $cat->delete();
+
+        return redirect('/lista_cat');
+    } else {
+        echo "Registro não localizado";
+    }
+});
