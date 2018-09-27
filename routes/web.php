@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Categoria;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -251,5 +251,20 @@ Route::get('/remove_cat', function() {
     $cats = DB::table('categorias')->get();
     foreach($cats as $c) {
         echo "Id: {$c->id}, Nome: {$c->nomes}<br>";
+    }
+});
+
+Route::get('/novo_cat/{nome}', function($nome) {
+    $cat = new Categoria();
+    $cat->nomes = $nome;
+
+    $cat->save();
+    return redirect('/lista_cat');
+});
+
+Route::get('/lista_cat', function() {
+    $categorias = Categoria::all();
+    foreach ($categorias as $c) {
+        echo "Id: {$c->id}, Nome {$c->nomes}<br>";
     }
 });
