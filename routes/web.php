@@ -323,3 +323,12 @@ Route::get('/cat_maior/{id}', function($id) {
     echo "Max: $cats<br>";
 
 });
+
+Route::get('/cat_todas', function() {
+    $cats = Categoria::withTrashed()->get();
+
+    foreach ($cats as $c) {
+        $trash = $c->trashed() ? 'Sim' : 'Não';
+        echo "Id: {$c->id}, Nome {$c->nomes}, Excluído: $trash<br>";
+    }
+});
